@@ -1,0 +1,74 @@
+.modal-container {
+    background-color: #5a5a5a9f;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    width: 400px;
+    background-color: white;
+    border-radius: 20px;
+}
+
+.modal-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 50px;
+    padding-bottom: 0px;
+    color: #391f6f;
+}
+.modal-top p{
+    font-size: 32px;
+    font-family: "Genera";
+    letter-spacing: -1px;
+    margin: 0;
+}
+.modal-top button {
+    background-color: #b0adaa5e;
+    border: none;
+    outline: none;
+    height: 30px;
+    transition: 0.5s;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 7px;
+}
+
+.modal-top button:hover {
+    background-color: #6e15eb;
+}
+.modal-top button:hover svg path:last-child {
+    stroke: white !important;
+}
+.modal-form {
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    gap: 20px;
+}
+
+.modal-form input {
+    border-radius: 7px;
+    border: 1px solid #b0adaa;
+    padding: 10px;
+    outline-color: #6e15eb;
+    font-family: "Aceh";
+}
+
+.modal-form button {
+    align-self: flex-end;
+    border: none;
+    background-color: #6e15eb;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 7px;
+}

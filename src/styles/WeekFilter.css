@@ -1,0 +1,29 @@
+.week-filter-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px 70px;
+    padding-top: 0;
+    gap: 20px;
+}
+
+.week-filter-container p {
+    font-family: "Genera";
+    letter-spacing: -0.5px;
+    color: #391f6f;
+}
+
+.week-filter-buttons button {
+    background-color: #6e15eb;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px;
+    cursor: pointer;
+    border-radius: 100%;
+    padding: 0;
+    padding-top: 3px;
+}

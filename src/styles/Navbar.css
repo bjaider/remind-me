@@ -1,0 +1,13 @@
+.navbar-container{
+    margin-right: 50px;
+    padding: 20px 0;
+}
+
+.navbar-container h1{
+    margin: 0;
+    font-size: 32px;
+    font-family: "Genera";
+    letter-spacing: -3px;
+    margin-bottom: 10px;
+    color: #20004f;
+}

@@ -1,0 +1,25 @@
+.greetings-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 70px;
+}
+
+.greetings-container h3, .greetings-container p {
+    margin: 0;
+}
+
+
+.greetings-container h3 {
+    font-size: 32px;
+    font-family: "Genera";
+    letter-spacing: -0.5px;
+    margin-bottom: 10px;
+    color: #391f6f;
+}
+
+.greetings-container p {
+    color: #b0adaa;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+}

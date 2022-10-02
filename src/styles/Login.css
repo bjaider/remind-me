@@ -1,0 +1,9 @@
+.login-container{
+    padding-right: 70px;
+}
+.login-signin-button{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}

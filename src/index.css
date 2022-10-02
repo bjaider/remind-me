@@ -1,10 +1,28 @@
+@font-face {
+  font-family: "Genera";
+  src: local("Genera"),
+    url("./fonts/Genera-Light.ttf") format("truetype");
+  font-weight: light;
+}
+
+@font-face {
+  font-family: "Genera";
+  src: local("GeneraSemibold"),
+    url("./fonts/Genera-SemiBold.ttf") format("truetype");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Aceh";
+  src: local("AcehLight"),
+    url("./fonts/Aceh-Light.ttf") format("truetype");
+  font-weight: light;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: "Aceh";
+  font-weight: 600;
 }
 
 code {

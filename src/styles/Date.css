@@ -1,0 +1,16 @@
+.date-container {
+    padding: 10px 0;
+    min-height: 45px;
+    border-bottom: 1px solid #b0adaa;
+    background-color: #eff3ff;
+}
+
+.date-container p {
+    margin: 0;
+}
+.date-weekday{
+    margin-bottom: 5px !important;
+}
+.date-weekday, .date-day {
+    color: #391f6f;
+}
