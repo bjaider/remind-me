@@ -1,5 +1,8 @@
 .calendar {
     display: flex;
+    padding: 30px 100px;
+    height: calc(75vh + 5px);
+    overflow: auto;
 }
 
 .calendar-cells-container {
@@ -7,6 +10,9 @@
     flex: 1;
     border-radius: 20px;
     box-shadow: 0px 0px 18px 4px rgba(0, 0, 0, 0.5);
+    margin-left: 100px;
+    position: relative;
+    height: fit-content;
 }
 .calendar-cells-container .calendar-colums:first-child .date-container  {
     border-top-left-radius: 20px;
@@ -21,20 +27,27 @@
 .calendar-colums {
     flex: 1;
     border-right: 1px solid #b0adaa;
-    border-top: 1px solid #b0adaa;
+    border-top-left-radius: 20px;
+    height: fit-content;
 }
 
 .calendar-colums:first-child {
     border-left: 1px solid #b0adaa;
+    border-top: 0;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
 }
-
+.calendar-colums:nth-child(2) .date-container {
+    border-top-left-radius: 20px;
+}
 .calendar-colums:last-child {
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
 }
-
+.calendar-time-container{
+    position: absolute;
+    left: -100px;
+}
 .calendar-time-container .date-container {
     border-bottom: none;
     background-color: transparent;

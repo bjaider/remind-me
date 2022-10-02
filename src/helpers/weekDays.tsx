@@ -17,6 +17,5 @@ export const weekDays = (week: number = 0) => {
       year: moment(weekStart).add(i, 'days').format('YYYY'),
     })
   }
-  console.log('days', days)
   return {days}
 }

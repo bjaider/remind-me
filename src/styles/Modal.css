@@ -9,6 +9,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 3;
 }
 
 .modal-content {
@@ -71,4 +72,9 @@
     color: white;
     padding: 10px 20px;
     border-radius: 7px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.modal-form button:hover {
+    background-color: #391f6f;
 }

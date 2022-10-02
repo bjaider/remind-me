@@ -12,7 +12,6 @@ const WeekFilter: React.FC<WeekFilterProps> = ({
   changeWeek,
   setChangeWeek,
 }) => {
-  console.log(changeWeek)
   return (
     <div className="week-filter-container">
       <div className="week-filter-buttons">

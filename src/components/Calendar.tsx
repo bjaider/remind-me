@@ -30,16 +30,16 @@ const Calendar = () => {
         setChangeWeek={setChangeWeek}
       />
       <div className="calendar">
-        <div className="calendar-time-container">
-          <div className="date-container"></div>
-          {hours.map((time) => (
-            <div className="calendar-time">
-              <TimeCells time={time} />
-            </div>
-          ))}
-        </div>
-
         <div className="calendar-cells-container">
+          <div className="calendar-time-container">
+            <div className="date-container"></div>
+            {hours.map((time) => (
+              <div className="calendar-time">
+                <TimeCells time={time} />
+              </div>
+            ))}
+          </div>
+
           {days.map(({day, weekday}) => (
             <div className="calendar-colums">
               <Date day={day} weekday={weekday} />
