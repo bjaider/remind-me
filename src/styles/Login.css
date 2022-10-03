@@ -7,3 +7,6 @@
     outline: none;
     cursor: pointer;
 }
+.login-container img{
+    border-radius: 100%;
+}
