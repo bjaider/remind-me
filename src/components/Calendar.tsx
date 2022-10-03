@@ -7,6 +7,7 @@ import TimeCells from './TimeCells'
 import WeekFilter from './WeekFilter'
 import {dateFormatFilter} from '../helpers/dateFormatFilter'
 import moment from 'moment'
+import Event from './Event'
 
 const Calendar = () => {
   const [changeWeek, setChangeWeek] = useState(5)
@@ -29,23 +30,29 @@ const Calendar = () => {
         changeWeek={changeWeek}
         setChangeWeek={setChangeWeek}
       />
-      <div className="calendar">
-        <div className="calendar-cells-container">
-          <div className="calendar-time-container">
-            <div className="date-container"></div>
-            {hours.map((time) => (
-              <div className="calendar-time">
-                <TimeCells time={time} />
+
+      <div className="calendar-container-content">
+        <div className="calendar">
+          <div className="calendar-cells-container">
+            <div className="calendar-time-container">
+              <div className="date-container"></div>
+              {hours.map((time) => (
+                <div className="calendar-time">
+                  <TimeCells time={time} />
+                </div>
+              ))}
+            </div>
+
+            {days.map(({day, weekday}) => (
+              <div className="calendar-colums">
+                <Date day={day} weekday={weekday} />
+                <GridCells hours={hours} />
               </div>
             ))}
           </div>
-
-          {days.map(({day, weekday}) => (
-            <div className="calendar-colums">
-              <Date day={day} weekday={weekday} />
-              <GridCells hours={hours} />
-            </div>
-          ))}
+        </div>
+        <div className="calendar-event">
+          <Event />
         </div>
       </div>
     </div>
