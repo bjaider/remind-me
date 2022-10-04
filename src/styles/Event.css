@@ -10,7 +10,9 @@
     gap: 20px;
     margin-bottom: 30px;
 }
-
+.event-color-picker{
+    margin-bottom: 20px;
+}
 .event-category button {
     border: none;
     background-color: #e3defe;
