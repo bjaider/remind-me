@@ -1,105 +1,11 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState, useContext} from 'react'
 import '../styles/Calendar.css'
 import Event from './Event'
 import styled from 'styled-components'
 import {WeeklyCalendar, Card} from 'react-rainbow-components'
-console.log(new Date())
-const firstDay = new Date()
-firstDay.setDate(firstDay.getDate() - firstDay.getDay())
-const daysOfWeek = Array.from(Array(7), (_value, index) => {
-  const day = new Date(firstDay)
-  day.setDate(day.getDate() + index)
-  return day
-})
-const events = [
-  {
-    id: '1',
-    title: 'Reinier',
-    startDate: new Date(daysOfWeek[0].setHours(6, 0, 0, 0)),
-    endDate: new Date(daysOfWeek[0].setHours(6, 30, 0, 0)),
-    backgroundColor: 'rgba(253,230,230,1)',
-    color: 'rgba(254,72,73,1)',
-  },
-  {
-    id: '2',
-    title: 'JL Torres',
-    startDate: new Date(daysOfWeek[0].setHours(7, 30, 0, 0)),
-    endDate: new Date(daysOfWeek[0].setHours(8, 0, 0, 0)),
-    backgroundColor: 'rgba(255,204,0,0.4)',
-    color: 'rgba(255,157,0,1)',
-  },
-  {
-    id: '3',
-    title: 'Leandro Torres',
-    startDate: new Date(daysOfWeek[0].setHours(11, 0, 0, 0)),
-    endDate: new Date(daysOfWeek[0].setHours(12, 15, 0, 0)),
-    backgroundColor: 'rgba(145,220,193,1)',
-    color: 'rgba(0,171,142,1)',
-  },
-  {
-    id: '4',
-    title: 'Yuri V. Munayev',
-    startDate: new Date(daysOfWeek[1].setHours(6, 30, 0, 0)),
-    endDate: new Date(daysOfWeek[1].setHours(7, 30, 0, 0)),
-    backgroundColor: 'rgba(254,72,73,1)',
-  },
-  {
-    id: '5',
-    title: 'Tahimi',
-    startDate: new Date(daysOfWeek[1].setHours(8, 0, 0, 0)),
-    endDate: new Date(daysOfWeek[1].setHours(8, 15, 0, 0)),
-    backgroundColor: '#9de7da',
-  },
-  {
-    id: '6',
-    title: 'Tahimi L',
-    startDate: new Date(daysOfWeek[2].setHours(8, 0, 0, 0)),
-    endDate: new Date(daysOfWeek[2].setHours(9, 30, 0, 0)),
-    backgroundColor: 'rgba(240,243,56,1)',
-  },
-  {
-    id: '7',
-    title: 'Sara',
-    startDate: new Date(daysOfWeek[3].setHours(6, 0, 0, 0)),
-    endDate: new Date(daysOfWeek[3].setHours(6, 30, 0, 0)),
-    backgroundColor: 'rgba(254,72,73,1)',
-  },
-  {
-    id: '8',
-    title: 'Tahimi',
-    startDate: new Date(daysOfWeek[3].setHours(6, 30, 0, 0)),
-    endDate: new Date(daysOfWeek[3].setHours(7, 0, 0, 0)),
-    backgroundColor: 'rgba(254,72,73,1)',
-  },
-  {
-    id: '9',
-    title: 'Reinier',
-    startDate: new Date(daysOfWeek[3].setHours(7, 30, 0, 0)),
-    endDate: new Date(daysOfWeek[3].setHours(8, 15, 0, 0)),
-    backgroundColor: 'rgba(255,204,0,1)',
-  },
-  {
-    id: '10',
-    title: 'Sara P',
-    startDate: new Date(daysOfWeek[4].setHours(6, 30, 0, 0)),
-    endDate: new Date(daysOfWeek[4].setHours(8, 0, 0, 0)),
-    backgroundColor: 'rgba(254,72,73,1)',
-  },
-  {
-    id: '11',
-    title: 'Leo Torres',
-    startDate: new Date(daysOfWeek[5].setHours(6, 0, 0, 0)),
-    endDate: new Date(daysOfWeek[5].setHours(7, 0, 0, 0)),
-    backgroundColor: 'rgba(254,72,73,1)',
-  },
-  {
-    id: '12',
-    title: 'Tahimi',
-    startDate: new Date(daysOfWeek[6].setHours(8, 0, 0, 0)),
-    endDate: new Date(daysOfWeek[6].setHours(9, 30, 0, 0)),
-    backgroundColor: 'rgba(240,243,56,1)',
-  },
-]
+import {formatDateTime} from '../helpers/formatDateTime'
+import {Context} from '../context/ContextProvider'
+import {useGetEvents} from '../services/events'
 
 const StyledCard = styled(Card)`
   height: 100%;
@@ -108,6 +14,25 @@ const StyledCard = styled(Card)`
 
 const Calendar = () => {
   const [currentWeek, setCurrentWeek] = useState<Date>(new Date())
+  const {events, setEvents}: any = useContext(Context)
+  const {data} = useGetEvents([events], {enabled: true})
+  useEffect(() => {
+    if (data?.data) {
+      const events = data.data.events.map((event: any) => {
+        const {startDate, endStart} = formatDateTime(
+          event.date,
+          event.startTime,
+          event.endTime,
+        )
+        event.startDate = startDate
+        event.endDate = endStart
+        event.backgroundColor = event.backgroundColor.hex
+        return event
+      })
+      setEvents(events)
+    }
+  }, [data, setEvents])
+
   return (
     <div className="calendar-container">
       <div className="calendar-container-content">

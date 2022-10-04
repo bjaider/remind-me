@@ -4,14 +4,14 @@ export const Context = createContext({})
 
 export const ContextProvider = ({children}: any) => {
   const [user, setUser] = useState(null)
+  const [events, setEvents] = useState([])
   return (
     <Context.Provider
       value={{
         user,
         setUser,
-        /* loggued: () => {
-          return localStorage.getItem("key") ? true : false;
-        }, */
+        events,
+        setEvents,
       }}
     >
       {children}

@@ -13,9 +13,6 @@ function App() {
     const config = {
       method: 'get',
       url: 'users/user',
-      headers: {
-        'x-token': localStorage.getItem('token') || '',
-      },
     }
     axiosIntance(config)
       .then(function (response) {
@@ -26,7 +23,7 @@ function App() {
       .catch(function (error) {
         console.log(error)
       })
-  }, [])
+  }, [setUser])
 
   return (
     <div className="app-container">

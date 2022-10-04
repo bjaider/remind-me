@@ -10,7 +10,7 @@ const Modal: React.FC<ModalProps> = ({setIsVisible}) => {
   const {setUser}: any = useContext(Context)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const handlePost = () => {
+  const handleSubmit = () => {
     const userInfo = {
       email: email,
       password: password,
@@ -52,7 +52,7 @@ const Modal: React.FC<ModalProps> = ({setIsVisible}) => {
             placeholder="Password"
             onChange={(e: any) => setPassword(e.target.value)}
           />
-          <button onClick={() => handlePost()}>Log in</button>
+          <button onClick={() => handleSubmit()}>Log in</button>
         </div>
       </div>
     </div>

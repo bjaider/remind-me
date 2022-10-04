@@ -4,7 +4,7 @@ import SingOut from '../Icon/sing-out'
 import '../styles/Navbar.css'
 type NavbarProps = {}
 const Navbar: React.FC<NavbarProps> = () => {
-  const {user, setUser}: any = useContext(Context)
+  const {user, setUser, setEvents}: any = useContext(Context)
   return (
     <div className="navbar-container">
       <h1>RemindMe</h1>
@@ -13,6 +13,7 @@ const Navbar: React.FC<NavbarProps> = () => {
           onClick={() => {
             setUser(null)
             localStorage.removeItem('token')
+            setEvents([])
           }}
         >
           <SingOut />

@@ -7,6 +7,8 @@ import './fonts/Genera-SemiBold.ttf'
 import './fonts/Aceh-Light.ttf'
 import {ContextProvider} from './context/ContextProvider'
 import {Application} from 'react-rainbow-components'
+import {QueryClient, QueryClientProvider} from 'react-query'
+const queryClient = new QueryClient()
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 const theme = {
   rainbow: {
@@ -16,9 +18,11 @@ const theme = {
   },
 }
 root.render(
-  <ContextProvider>
-    <Application theme={theme}>
-      <App />
-    </Application>
-  </ContextProvider>,
+  <QueryClientProvider client={queryClient}>
+    <ContextProvider>
+      <Application theme={theme}>
+        <App />
+      </Application>
+    </ContextProvider>
+  </QueryClientProvider>,
 )

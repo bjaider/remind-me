@@ -1,19 +1,29 @@
-.event-container p{
+.event-container {
+    height: calc(85vh + 5px);
+    overflow: auto;
+    padding-bottom: 30px;
+    padding-right: 20px;
+}
+
+.event-container p {
     text-align: left;
     color: #b0adaa;
     font-weight: bold;
     margin: 0;
     margin-bottom: 10px;
 }
+
 .event-category {
     display: flex;
     gap: 20px;
     margin-bottom: 30px;
 }
-.event-color-picker{
+
+.event-color-picker {
     margin-bottom: 20px;
 }
-.event-category button {
+
+.event-category button, .event-submit {
     border: none;
     background-color: #e3defe;
     padding: 8px 35px;
@@ -23,11 +33,32 @@
     color: #711aeb;
     font-weight: bold;
     cursor: pointer;
+    transition: 0.5s;
 }
+
+.event-category button:hover, .event-submit:hover,.event-category .active {
+    background-color: #711aeb;
+    color: #e3defe;
+}
+
+.event-submit {
+    border: none;
+    background-color: #e3defe;
+    padding: 8px 35px;
+    border-radius: 10px;
+    font-family: "Aceh";
+    font-size: 20px;
+    color: #711aeb;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
 .event-title {
     margin-bottom: 30px;
 }
-.event-title input,.event-location input {
+
+.event-title input, .event-location input {
     border-radius: 7px;
     border: 1px solid #b0adaa;
     padding: 10px;
@@ -35,12 +66,20 @@
     font-family: "Aceh";
     width: 100%;
 }
+
 .event-date {
     margin-bottom: 30px;
 }
+
 .event-date span {
     display: none;
 }
+
 .event-date input {
     border-radius: 7px;
+}
+
+.event-time-pickers {
+    display: flex;
+    gap: 20px;
 }
