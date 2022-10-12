@@ -1,6 +1,6 @@
 import React, {useState, useContext} from 'react'
 import {Context} from '../context/ContextProvider'
-import {axiosIntance} from '../helpers/axios'
+import {axiosInstance} from '../helpers/axios'
 import Close from '../Icon/close'
 import '../styles/Modal.css'
 type ModalProps = {
@@ -8,25 +8,36 @@ type ModalProps = {
 }
 const Modal: React.FC<ModalProps> = ({setIsVisible}) => {
   const {setUser}: any = useContext(Context)
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [userInfo, setUserInfo] = useState({})
+  const [isLogin, setIsLogin] = useState(true)
   const handleSubmit = () => {
-    const userInfo = {
-      email: email,
-      password: password,
-    }
     const config = {
       method: 'post',
       url: 'auth/login',
       data: userInfo,
     }
-    axiosIntance(config)
+    axiosInstance(config)
       .then(function (response) {
+        window.location.reload()
         const {data} = response
         console.log('data', data)
-        setUser(data.user)
+        /* setUser(data.user) */
         localStorage.setItem('token', data.token)
-        setIsVisible(false)
+        /* setIsVisible(false) */
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
+  }
+  const handleSignUp = () => {
+    const config = {
+      method: 'post',
+      url: 'users',
+      data: userInfo,
+    }
+    axiosInstance(config)
+      .then(function (response) {
+        setIsLogin(!isLogin)
       })
       .catch(function (error) {
         console.log(error)
@@ -36,23 +47,43 @@ const Modal: React.FC<ModalProps> = ({setIsVisible}) => {
     <div className="modal-container">
       <div className="modal-content">
         <div className="modal-top">
-          <p>Login</p>
+          <p>{isLogin ? 'Login' : 'Sign Up'}</p>
           <button onClick={() => setIsVisible(false)}>
             <Close />
           </button>
         </div>
         <div className="modal-form">
+          {!isLogin && (
+            <input
+              type="text"
+              placeholder="Name"
+              onChange={(e: any) =>
+                setUserInfo({...userInfo, name: e.target.value})
+              }
+            />
+          )}
           <input
             type="text"
             placeholder="Email"
-            onChange={(e: any) => setEmail(e.target.value)}
+            onChange={(e: any) =>
+              setUserInfo({...userInfo, email: e.target.value})
+            }
           />
           <input
             type="password"
             placeholder="Password"
-            onChange={(e: any) => setPassword(e.target.value)}
+            onChange={(e: any) =>
+              setUserInfo({...userInfo, password: e.target.value})
+            }
           />
-          <button onClick={() => handleSubmit()}>Log in</button>
+          <div className="modal-button-container">
+            <button onClick={() => setIsLogin(!isLogin)}>
+              {isLogin ? 'Go to Sign Up' : 'Go to Login'}
+            </button>
+            <button onClick={() => (isLogin ? handleSubmit() : handleSignUp())}>
+              Submit
+            </button>
+          </div>
         </div>
       </div>
     </div>

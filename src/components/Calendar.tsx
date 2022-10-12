@@ -15,7 +15,9 @@ const StyledCard = styled(Card)`
 const Calendar = () => {
   const [currentWeek, setCurrentWeek] = useState<Date>(new Date())
   const {events, setEvents}: any = useContext(Context)
-  const {data} = useGetEvents([events], {enabled: true})
+  const {data} = useGetEvents([events], {
+    enabled: !!localStorage.getItem('token'),
+  })
   useEffect(() => {
     if (data?.data) {
       const events = data.data.events.map((event: any) => {
@@ -32,7 +34,6 @@ const Calendar = () => {
       setEvents(events)
     }
   }, [data, setEvents])
-
   return (
     <div className="calendar-container">
       <div className="calendar-container-content">

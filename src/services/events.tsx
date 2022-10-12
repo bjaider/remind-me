@@ -1,8 +1,8 @@
 import {useQuery, useMutation} from 'react-query'
-import {axiosIntance} from '../helpers/axios'
+import {axiosInstance} from '../helpers/axios'
 
 const useGetEvents = (keys?: any, config?: any) => {
-  return useQuery([keys], async () => await axiosIntance.get('events'), config)
+  return useQuery([keys], async () => await axiosInstance.get('events'), config)
 }
 const usePostEvents = (
   setEvents: any,
@@ -12,7 +12,7 @@ const usePostEvents = (
 ) => {
   return useMutation(
     async ({...params}: any) => {
-      return await axiosIntance.post('events', params)
+      return await axiosInstance.post('events', params)
     },
     {
       onSuccess: (response) => {

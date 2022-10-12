@@ -10,7 +10,15 @@ const Login = () => {
   return (
     <div className="login-container">
       {user ? (
-        <img src={user?.avatar} width={48} alt="Avatar" />
+        <img
+          src={
+            user?.avatar
+              ? user?.avatar
+              : 'https://i.pravatar.cc/150?u=a042581f4e29026704d'
+          }
+          width={48}
+          alt="Avatar"
+        />
       ) : (
         <>
           <button

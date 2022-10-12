@@ -5,7 +5,7 @@ import Greetings from './components/Greetings'
 import Login from './components/Login'
 import Navbar from './components/Navbar'
 import {Context} from './context/ContextProvider'
-import {axiosIntance} from './helpers/axios'
+import {axiosInstance} from './helpers/axios'
 
 function App() {
   const {setUser}: any = useContext(Context)
@@ -14,15 +14,16 @@ function App() {
       method: 'get',
       url: 'users/user',
     }
-    axiosIntance(config)
-      .then(function (response) {
-        const {data} = response
-        console.log(data)
-        setUser(data)
-      })
-      .catch(function (error) {
-        console.log(error)
-      })
+    localStorage.getItem('token') &&
+      axiosInstance(config)
+        .then(function (response) {
+          const {data} = response
+          console.log(data)
+          setUser(data)
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
   }, [setUser])
 
   return (

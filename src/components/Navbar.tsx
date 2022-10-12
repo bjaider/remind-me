@@ -11,9 +11,10 @@ const Navbar: React.FC<NavbarProps> = () => {
       {user && (
         <button
           onClick={() => {
-            setUser(null)
+            window.location.reload()
             localStorage.removeItem('token')
-            setEvents([])
+            /* setUser(null) */
+            /* setEvents([]) */
           }}
         >
           <SingOut />
